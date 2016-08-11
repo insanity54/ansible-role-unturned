@@ -1,0 +1,25 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: insanity54
+  description: OpenBazaar Server
+  license: MIT
+  min_ansible_version: 2.0
+  galaxy_tags:
+    - unturned
+    - game
+    - video
+  platforms:
+    - name: Ubuntu
+      versions:
+        - lucid
+        - maverick
+        - natty
+        - oneiric
+        - precise
+        - quantal
+        - raring
+        - saucy
+        - trusty
+        - utopic

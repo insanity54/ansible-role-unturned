@@ -1,0 +1,14 @@
+---
+
+unturned_user: unturned
+unturned_group: unturned
+
+steam_username: gaben
+steam_password: moolyftw
+
+rocketmod_api_key: abcdefNOPE
+rocketmod_build_id: 651
+
+
+steam: true
+rocketmod: true

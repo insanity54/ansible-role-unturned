@@ -1,0 +1,9 @@
+---
+- hosts: ansible
+  remote_user: root
+  vars_files:
+    - vars/secret.yml
+    - vars/public.yml
+  roles:
+    - insanity54.bootstrap
+    - ansible-role-unturned

@@ -1,0 +1,4 @@
+rocketmod_api_key: "{{vault_rocketmod_api_key}}"
+rocketmod_build_id: 631
+steam_username: "{{vault_steam_username}}"
+steam_password: "{{vault_steam_password}}"

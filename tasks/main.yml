@@ -1,0 +1,41 @@
+---
+
+- name: enable i386 packages in apt
+  lineinfile: dest=/var/lib/dpkg/arch line="i386" create=yes
+
+- name: Install required system packages
+  apt: pkg={{ item  }} state=installed update-cache=yes
+  with_items:
+    - build-essential
+    - gcc-multilib
+    - rpm
+    - libstdc++6:i386
+    - libgcc1:i386
+    - zlib1g:i386
+    - libncurses5:i386
+    - libmono2.0-cil
+    - mono-runtime
+    - xinit
+    - x11-common
+    - unzip
+    #- Xorg
+
+
+# Group and user
+- name: Create the service group
+  group: name={{ unturned_group }} state=present
+
+- name: Create the service User
+  user:
+    name="{{ unturned_user }}"
+    groups="{{ unturned_group }}"
+    shell=/bin/bash
+    system=yes
+
+- name: Include Steam tasks
+  include: tasks/steam.yml
+  when: steam == true
+
+- name: Include Rocketmod tasks
+  include: tasks/rocketmod.yml
+  when: rocketmod == true

@@ -1,0 +1,19 @@
+---
+
+- name: Create steam directory
+  file: state=directory path=/home/{{unturned_user}}/steamcmd mode=0755
+
+- name: Download Steam
+  get_url: url=https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz dest=/tmp/ mode=0755
+
+- name: Extract Steam archive
+  unarchive: copy=no src=/tmp/steamcmd_linux.tar.gz dest=/home/{{unturned_user}}/steamcmd
+
+- name: Make steamcmd executable
+  file: state=file path=/home/{{unturned_user}}/steamcmd/steamcmd.sh mode=0755
+
+- name: Install Unturned through Steam
+  command: ./steamcmd.sh +@sSteamCmdForcePlatformBitness 32 +login "{{steam_username}}" "{{steam_password}}" +force_install_dir /home/{{unturned_user}}/unturned +app_update 304930 validate +exit
+  args:
+    chdir: /home/{{unturned_user}}/steamcmd
+    creates: /home/{{unturned_user}}/unturned
