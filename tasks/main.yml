@@ -35,7 +35,14 @@
 - name: Include Steam tasks
   include: tasks/steam.yml
   when: steam == true
+  tags: steam
 
 - name: Include Rocketmod tasks
   include: tasks/rocketmod.yml
   when: rocketmod == true
+  tags: rocketmod
+
+- name: Include Configuration tasks
+  include: tasks/configuration.yml
+  when: configuration == true
+  tags: configuration

@@ -10,7 +10,9 @@
   get_url: url=http://api.rocketmod.net/download/unturned-linux/{{rocketmod_build_id}}/{{rocketmod_api_key}}/RocketUnturnedLinux_{{rocketmod_build_id}}.zip dest=/tmp/ mode=0755
 
 - name: Extract Rocketmod archive
-  unarchive: copy=no src=/tmp/RocketUnturnedLinux_{{rocketmod_build_id}}.zip dest=/tmp/rocketmod
+  unarchive: copy=no src=/tmp/RocketUnturnedLinux_{{rocketmod_build_id}}.zip dest=/tmp/rocketmod owner={{unturned_user}} group={{unturned_group}}
+  args:
+    creates: /tmp/rocketmod/RocketLauncher.exe
 
 - name: Copy Rocketmod DLLs to the Unturned directory
   copy: remote_src=true src=/tmp/rocketmod/{{item}} dest=/home/{{unturned_user}}/unturned/Unturned_Data/Managed/
@@ -24,7 +26,7 @@
   copy: remote_src=true src=/tmp/rocketmod/RocketLauncher.exe dest=/home/{{unturned_user}}/unturned/RocketLauncher.exe
 
 - name: copy Rocketmod management scripts to the home directory
-  copy: remote_src=true src=/tmp/rocketmod/Scripts/{{item}} dest=/home/{{unturned_user}}/ mode=0755
+  copy: remote_src=true src=/tmp/rocketmod/Scripts/{{item}} dest=/home/{{unturned_user}}/ mode=0755 owner={{unturned_user}} group={{unturned_group}}
   with_items:
     - start.sh
     - update.sh

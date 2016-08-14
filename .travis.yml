@@ -36,9 +36,9 @@ script:
     || (echo 'Idempotence test: fail' && exit 1)
 
   # Test correctness
-  - stat /home/openbazaar/openbazaar/ob.cfg
-  - stat /etc/init/openbazaard.conf
-  - initctl status openbazaard
+  - stat /home/unturned/unturned/Unturned_Data/mainData
+  - stat /etc/init/unturned.conf
+  - initctl status unturned
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

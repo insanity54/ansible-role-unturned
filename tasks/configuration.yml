@@ -1,0 +1,26 @@
+---
+
+- name: Set server name
+  lineinfile: state=present create=yes regexp="^name .*$" line="name {{server_name}}" dest=/home/{{unturned_user}}/unturned/Servers/{{rocketmod_instance}}/Server/Commands.dat
+
+- name: Set server maximum players
+  lineinfile: state=present create=yes regexp="^maxplayers .*$" line="maxplayers {{server_maxplayers}}" dest=/home/{{unturned_user}}/unturned/Servers/{{rocketmod_instance}}/Server/Commands.dat
+
+- name: Set server port
+  lineinfile: state=present create=yes regexp="^port .*$" line="port {{server_port}}" dest=/home/{{unturned_user}}/unturned/Servers/{{rocketmod_instance}}/Server/Commands.dat
+
+- name: Set server map
+  lineinfile: state=present create=yes regexp="^map .*$" line="map {{server_map}}" dest=/home/{{unturned_user}}/unturned/Servers/{{rocketmod_instance}}/Server/Commands.dat
+
+- name: Set server versus status
+  lineinfile: state=present create=yes regexp="^(?:pvp|pve)" line="{{server_versus}}" dest=/home/{{unturned_user}}/unturned/Servers/{{rocketmod_instance}}/Server/Commands.dat
+
+- name: Set server welcome message
+  lineinfile: state=present create=yes regexp="^welcome .*$" line="welcome {{server_welcome}}" dest=/home/{{unturned_user}}/unturned/Servers/{{rocketmod_instance}}/Server/Commands.dat
+
+- name: Set server difficulty
+  lineinfile: state=present create=yes regexp="^difficulty .*$" line="difficulty {{server_difficulty}}" dest=/home/{{unturned_user}}/unturned/Servers/{{rocketmod_instance}}/Server/Commands.dat
+
+- name: Set server password
+  lineinfile: state=present create=yes regexp="^password .*$" line="password {{server_password}}" dest=/home/{{unturned_user}}/unturned/Servers/{{rocketmod_instance}}/Server/Commands.dat
+  when: server_password is defined

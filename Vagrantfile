@@ -18,6 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.playbook = "./temp_playbook.yml"
     ansible.sudo = true
     ansible.extra_vars = { ansible_ssh_user: 'vagrant' }
+    ansible.raw_arguments  = "--vault-password-file=~/.ansible-vault-password"
   end
 
   config.vm.define MACHINE_HOSTNAME do |machine|

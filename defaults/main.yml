@@ -9,6 +9,18 @@ steam_password: moolyftw
 rocketmod_api_key: abcdefNOPE
 rocketmod_build_id: 651
 
+rocketmod_instance: myserver
+
+server_name: Test Server Kappa
+server_maxplayers: 16
+server_port: 27015
+server_map: Yukon
+server_versus: pve
+server_welcome: Get off my lawn, ya little rascals!
+server_difficulty: normal
+#server_password: rosebud
+
 
 steam: true
 rocketmod: true
+configuration: true
